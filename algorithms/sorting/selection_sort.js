@@ -1,61 +1,54 @@
-let values = [];
-let numOfRects = 150;
-let rectWidth;
-let n;
-
-//Recursive Bubble Sort
-function selctionSort(arr, n) {
-    // If there is no remaining iterations do nothing
-    if (n <= 1) {
-        return 0;
-    }
-
-    // Swap the elements by comparing them
-    for (let j = 0; j < n - 1; j++) {
-        if (arr[j] < arr[j + 1]) {
-            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-        }
-    }
-
-    // We did one more iteration return the remaining number of iterations
-    return n - 1;
-}
-
-function resetArray() {
-    // Generate the values
-    values = new Array(floor(width / rectWidth));
-    for (let i = 0; i < values.length; i++) {
-        values[i] = random(height);
-    }
-    // The number of iterations is equal to the number of values
-    n = values.length;
-}
-
+let rect_heights = [];
+let array_len = 0;
+let space = 10;
+let w = 0;
 function setup() {
-    createCanvas(800, 300);
-    rectWidth = floor(width / numOfRects);
+    createCanvas(400, 400);
+    for (i = 0; i < width; i += space){
+        rheight = random(50, 350) 
+        rect_heights[array_len] = height - rheight - 50;
+        array_len += 1
+    }
+    frameRate = 30
+  }
 
-    // Generate the values
-    resetArray();
+function draw(){
+    background = 250;
+    drawinitialise();
+    selection_sort();
+    //drawinitialise();
+}
+function drawinitialise(){
+    clear();
+    j = 0
+    for (i = 0; i < width; i += space){
+        strokeWeight(2);
+        rect(0 + i, height - rect_heights[j], space, rect_heights[j]);
+        j += 1;
+    }
 }
 
-function draw() {
-    // Define the "speed" at which we do the iterations
-    frameRate(10);
-    background(0);
-    stroke(2);
-    fill(250);
-
-    // Show the values
-    for (let i = 0; i < values.length; i++) {
-        rect(i * rectWidth, height - values[i], rectWidth, values[i]);
+function selection_sort(){
+    //for (i = 0; i < array_len; i += 1){
+    if (w < array_len){
+        min_val = rect_heights[w]
+        min_idx = w
+        for (j = w + 1; j < array_len; j += 1){
+             if (min_val > rect_heights[j]){
+                min_val = rect_heights[j]
+                min_idx = j 
+            }
+        //drawinitialise();
+        }
+        //if (min_idx != i){
+            temp = rect_heights[w]
+            rect_heights[w] = min_val
+            rect_heights[min_idx] = temp
+        //}
     }
-
-    // Make one new iteration
-    n = selectionSort(values, n);
-
-    // If we did all the operations let's reset the array with new values
-    if (n === 0) {
-        resetArray();
+    else{
+        //text('FINISHED', 10, 30);
+        noLoop();
     }
+    w++;
 }
