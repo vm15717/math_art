@@ -28,7 +28,6 @@ function drawinitialise(){
 }
 
 function insertion_sort(){
-    //for (i = 0; i < array_len; i += 1){
     if (w < array_len){
         curr_val = rect_heights[w]
         curr_idx = w
