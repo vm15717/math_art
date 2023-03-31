@@ -16,7 +16,6 @@ function draw(){
     background = 250;
     drawinitialise();
     insertion_sort();
-    //frameRate = 2;
 }
 function drawinitialise(){
     clear();
@@ -34,22 +33,15 @@ function insertion_sort(){
         curr_val = rect_heights[w]
         curr_idx = w
         t = 0
-        for (j = w - 1; j >= 0; j -= 1){
-            t = 0
-             if (curr_val < rect_heights[j]){
-                //curr_val = rect_heights[j]
-                t = 1
-                curr_idx = j
-            } 
+        j = w - 1
+        while((j > -1) && (curr_val < rect_heights[j])){
+            rect_heights[j + 1] = rect_heights[j]
+            j--;
+
         }
-        if (t == 1){
-            array1 = rect_heights.slice(curr_idx, w);
-            array2 = rect_heights.slice(w+1, );
-            rect_heights = rect_heights.slice(0,curr_idx).concat(rect_heights[w]).concat(array1).concat(array2)   
-        }    
+        rect_heights[j+1] = curr_val  
     }
     else{
-        //text('FINISHED', 10, 30);
         noLoop();
     }
     w++;
